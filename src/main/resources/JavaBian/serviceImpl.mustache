@@ -1,0 +1,150 @@
+/**
+ * @author Virtusa
+ */
+package {{package}};
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.bian.dto.*;
+import org.bian.util.JsonReader;
+import com.fasterxml.jackson.core.type.TypeReference;
+
+{{#operations}}
+@Service
+public class {{classname}}ServiceImpl implements {{classname}}Service {
+
+{{#operation}}
+{{#vendorExtensions}}
+ {{#actionTerms}}
+  {{#initiate}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/initiate}}
+  {{#create}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/create}}
+  {{#activate}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/activate}}
+  {{#register}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/register}}
+  {{#registerAt}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/registerAt}}
+  {{#configure}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/configure}}
+  {{#update}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/update}}
+  {{#record}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/record}}
+  {{#executePost}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/executePost}}
+  {{#executePut}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/executePut}}
+  {{#evaluate}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/evaluate}}
+  {{#provide}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/provide}}
+  {{#authorize}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/authorize}}
+  {{#requestPost}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/requestPost}}
+  {{#requestPut}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}{{#bodyParam}}{{#baseType}}, {{baseType}} request{{/baseType}}{{/bodyParam}}){
+{{>serviceImplJson}}
+	}
+	
+  {{/requestPut}}
+  {{#terminate}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}){
+{{>serviceImplJson}}
+	}
+	
+  {{/terminate}}
+  {{#notify}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/notify}}
+  {{#retrieve}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}){
+{{>serviceImplJson}}
+	}
+	
+  {{/retrieve}}
+  {{#retrieveRefIds}}
+	public List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(){
+		{{#returnBaseType}}return JsonReader.read("{{actionTermCamelCase}}-{{returnBaseType}}.json",new TypeReference<List<String>>(){});{{/returnBaseType}}{{^returnBaseType}}return null;{{/returnBaseType}}
+	}
+	
+  {{/retrieveRefIds}}
+  {{#retrieveBQs}}
+	public List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(){
+		{{#returnBaseType}}return JsonReader.read("{{actionTermCamelCase}}-{{returnBaseType}}.json",new TypeReference<List<String>>(){});{{/returnBaseType}}{{^returnBaseType}}return null;{{/returnBaseType}}
+	}
+	
+  {{/retrieveBQs}}
+  {{#retrieveBQIds}}
+	public List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId, String behaviorQualifier){
+		{{#returnBaseType}}return JsonReader.read("{{actionTermCamelCase}}-{{returnBaseType}}.json",new TypeReference<List<String>>(){});{{/returnBaseType}}{{^returnBaseType}}return null;{{/returnBaseType}}
+	}
+	
+  {{/retrieveBQIds}}
+ {{/actionTerms}}
+{{/vendorExtensions}}
+{{/operation}}
+}
+{{/operations}}

@@ -1,0 +1,21 @@
+{{=<% %>=}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "<%projName%>.fullname" . }}
+  labels:
+    app: {{ template "<%projName%>.name" . }}
+    chart: {{ template "<%projName%>.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "<%projName%>.name" . }}
+    release: {{ .Release.Name }}
+<%={{ }}=%>

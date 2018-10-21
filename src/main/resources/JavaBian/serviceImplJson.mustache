@@ -1,0 +1,1 @@
+		{{#returnBaseType}}return JsonReader.read("{{actionTermCamelCase}}-{{returnBaseType}}.json",new TypeReference<{{returnType}}>(){});{{/returnBaseType}}{{^returnBaseType}}return null;{{/returnBaseType}}
