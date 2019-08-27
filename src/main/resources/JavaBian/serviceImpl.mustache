@@ -18,95 +18,107 @@ public class {{classname}}ServiceImpl implements {{classname}}Service {
 {{#vendorExtensions}}
  {{#actionTerms}}
   {{#initiate}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/initiate}}
   {{#create}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/create}}
   {{#activate}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/activate}}
   {{#register}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/register}}
-  {{#registerAt}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
-{{>serviceImplJson}}
-	}
-	
-  {{/registerAt}}
   {{#configure}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/configure}}
+  {{#feedback}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/feedback}}
   {{#update}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/update}}
+  {{#control}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/control}}
+  {{#exchange}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/exchange}}
+  {{#capture}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/capture}}
   {{#record}}
 	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/record}}
-  {{#executePost}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+  {{#execute}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
-  {{/executePost}}
-  {{#executePut}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+  {{/execute}}
+  {{#request}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
-  {{/executePut}}
+  {{/request}}
+  {{#grant}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+{{>serviceImplJson}}
+	}
+	
+  {{/grant}}
   {{#evaluate}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/evaluate}}
   {{#provide}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/provide}}
   {{#authorize}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/authorize}}
-  {{#requestPost}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request){
-{{>serviceImplJson}}
-	}
-	
-  {{/requestPost}}
-  {{#requestPut}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}{{#bodyParam}}{{#baseType}}, {{baseType}} request{{/baseType}}{{/bodyParam}}){
-{{>serviceImplJson}}
-	}
-	
-  {{/requestPut}}
   {{#terminate}}
 	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}){
 {{>serviceImplJson}}
@@ -114,19 +126,25 @@ public class {{classname}}ServiceImpl implements {{classname}}Service {
 	
   {{/terminate}}
   {{#notify}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request){
 {{>serviceImplJson}}
 	}
 	
   {{/notify}}
   {{#retrieve}}
-	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}){
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}){
 {{>serviceImplJson}}
 	}
 	
   {{/retrieve}}
+  {{#retrieveSD}}
+	public {{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId){
+{{>serviceImplJson}}
+	}
+	
+  {{/retrieveSD}}
   {{#retrieveRefIds}}
-	public List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(){
+	public List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId){
 		{{#returnBaseType}}return JsonReader.read("{{actionTermCamelCase}}-{{returnBaseType}}.json",new TypeReference<List<String>>(){});{{/returnBaseType}}{{^returnBaseType}}return null;{{/returnBaseType}}
 	}
 	
@@ -138,7 +156,7 @@ public class {{classname}}ServiceImpl implements {{classname}}Service {
 	
   {{/retrieveBQs}}
   {{#retrieveBQIds}}
-	public List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId, String behaviorQualifier){
+	public List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId, String behaviorQualifier){
 		{{#returnBaseType}}return JsonReader.read("{{actionTermCamelCase}}-{{returnBaseType}}.json",new TypeReference<List<String>>(){});{{/returnBaseType}}{{^returnBaseType}}return null;{{/returnBaseType}}
 	}
 	

@@ -36,53 +36,74 @@ public class {{classname}}Controller {
  {{#actionTerms}}
   {{#initiate}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, {{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, {{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
 	}
 	
   {{/initiate}}
   {{#create}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, {{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, {{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
 	}
 	
   {{/create}}
   {{#activate}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(bianRequest.getData()));
 	}
 	
   {{/activate}}
   {{#register}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, {{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, {{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
 	}
 	
   {{/register}}
-  {{#registerAt}}
-	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
-	}
-	
-  {{/registerAt}}
   {{#configure}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, bianRequest.getData()));
 	}
 	
   {{/configure}}
+  {{#feedback}}
+	@{{functionalPattern}}.{{actionTermTitleCase}}
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, bianRequest.getData()));
+	}
+	
+  {{/feedback}}
   {{#update}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
 	}
 	
   {{/update}}
+  {{#control}}
+	@{{functionalPattern}}.{{actionTermTitleCase}}
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
+	}
+	
+  {{/control}}
+  {{#exchange}}
+	@{{functionalPattern}}.{{actionTermTitleCase}}
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
+	}
+	
+  {{/exchange}}
+  {{#capture}}
+	@{{functionalPattern}}.{{actionTermTitleCase}}
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
+	}
+	
+  {{/capture}}
   {{#record}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
 	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
@@ -90,31 +111,38 @@ public class {{classname}}Controller {
 	}
 	
   {{/record}}
-  {{#executePost}}
+  {{#execute}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
 	}
 	
-  {{/executePost}}
-  {{#executePut}}
+  {{/execute}}
+  {{#request}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
 	}
 	
-  {{/executePut}}
+  {{/request}}
+  {{#grant}}
+	@{{functionalPattern}}.{{actionTermTitleCase}}
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
+	}
+	
+  {{/grant}}
   {{#evaluate}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, {{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, {{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
 	}
 	
   {{/evaluate}}
   {{#provide}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, {{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, {{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
 	}
 	
   {{/provide}}
@@ -125,20 +153,6 @@ public class {{classname}}Controller {
 	}
 	
   {{/authorize}}
-  {{#requestPost}}
-	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}@PathVariable("cr-reference-id") String crReferenceId, {{/behavioralQualifier}}@RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}crReferenceId, {{/behavioralQualifier}}bianRequest.getData()));
-	}
-	
-  {{/requestPost}}
-  {{#requestPut}}
-	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}{{#bodyParam}}{{#baseType}}, @RequestBody BianRequest<{{baseType}}> bianRequest{{/baseType}}{{/bodyParam}}) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}{{#bodyParam}}{{#baseType}}, bianRequest.getData(){{/baseType}}{{/bodyParam}}));
-	}
-	
-  {{/requestPut}}
   {{#terminate}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
 	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}) {
@@ -148,25 +162,32 @@ public class {{classname}}Controller {
   {{/terminate}}
   {{#notify}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}, @RequestBody BianRequest<{{#bodyParam}}{{baseType}}{{/bodyParam}}> bianRequest) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}, bianRequest.getData()));
 	}
 	
   {{/notify}}
   {{#retrieve}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}));
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId{{#behavioralQualifier}}, @PathVariable("bq-reference-id") String bqReferenceId{{/behavioralQualifier}}) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId{{#behavioralQualifier}}, bqReferenceId{{/behavioralQualifier}}));
 	}
 	
   {{/retrieve}}
   {{#retrieveRefIds}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<List<String>> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}() {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}());
+	public BianResponse<List<String>> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId));
 	}
 	
   {{/retrieveRefIds}}
+  {{#retrieveSD}}
+	@{{functionalPattern}}.{{actionTermTitleCase}}
+	public BianResponse<{{returnType}}> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId));
+	}
+	
+  {{/retrieveSD}}
   {{#retrieveBQs}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
 	public BianResponse<List<String>> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}() {
@@ -176,8 +197,8 @@ public class {{classname}}Controller {
   {{/retrieveBQs}}
   {{#retrieveBQIds}}
 	@{{functionalPattern}}.{{actionTermTitleCase}}
-	public BianResponse<List<String>> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("cr-reference-id") String crReferenceId, @PathVariable("behavior-qualifier") String behaviorQualifier) {
-		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(crReferenceId, behaviorQualifier));
+	public BianResponse<List<String>> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(@PathVariable("sd-reference-id") String sdReferenceId, @PathVariable("cr-reference-id") String crReferenceId, @PathVariable("behavior-qualifier") String behaviorQualifier) {
+		return BianResponse.forSuccess(service.{{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(sdReferenceId, crReferenceId, behaviorQualifier));
 	}
 	
   {{/retrieveBQIds}}
