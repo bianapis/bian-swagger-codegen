@@ -1059,7 +1059,7 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "assessment")) {
 				serviceOperation.setFunctionalParttern("Assess");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "analysis")) {
-				serviceOperation.setFunctionalParttern("Analyze");
+				serviceOperation.setFunctionalParttern("Analyse");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "allocation")) {
 				serviceOperation.setFunctionalParttern("Allocate");		
 			} else {
