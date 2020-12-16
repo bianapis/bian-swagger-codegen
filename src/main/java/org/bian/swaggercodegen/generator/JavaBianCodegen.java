@@ -1021,14 +1021,12 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 	 */
 	private void resolveFunctionalPattern(ServiceOperation serviceOperation) {
 		String controlRecord = serviceOperation.getControlRecord();
-		
 		if(controlRecord != null) {
-
 			if (StringUtils.endsWith(controlRecord.toLowerCase(), "strategy")) {
 				serviceOperation.setFunctionalParttern("Direct");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "management-plan")) {
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "management-plan") || StringUtils.endsWith(controlRecord.toLowerCase(), "managementplan")) {
 				serviceOperation.setFunctionalParttern("Manage");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "administrative-plan")) {
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "administrative-plan") || StringUtils.endsWith(controlRecord.toLowerCase(), "administrativeplan")) {
 				serviceOperation.setFunctionalParttern("Administer");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "specification")) {
 				serviceOperation.setFunctionalParttern("Design");
@@ -1036,13 +1034,15 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 				serviceOperation.setFunctionalParttern("Develop");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "procedure")) {
 				serviceOperation.setFunctionalParttern("Process");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "operating-session")) {
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "operating-session") || StringUtils.endsWith(controlRecord.toLowerCase(), "atmnetworkoperatingsession")) {
 				serviceOperation.setFunctionalParttern("Operate");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "maintenance-agreement")) {
 				serviceOperation.setFunctionalParttern("Maintain");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "fulfillment-arrangement")) {
 				serviceOperation.setFunctionalParttern("Fulfill");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "transaction")) {
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "arrangement")) {
+                serviceOperation.setFunctionalParttern("Fulfill");
+            } else if (StringUtils.endsWith(controlRecord.toLowerCase(), "transaction")) {
 				serviceOperation.setFunctionalParttern("Transact");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "advise")) {
 				serviceOperation.setFunctionalParttern("Advise");
@@ -1061,7 +1061,7 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "analysis")) {
 				serviceOperation.setFunctionalParttern("Analyse");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "allocation")) {
-				serviceOperation.setFunctionalParttern("Allocate");		
+				serviceOperation.setFunctionalParttern("Allocate");
 			} else {
 				LOGGER.error("Invalid control record. Couldn't generate a Functional Pattern");
 			}
