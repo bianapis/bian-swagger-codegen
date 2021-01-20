@@ -986,8 +986,8 @@ public class JavaBianCodegen extends AbstractJavaCodegen
         ServiceOperation serviceOperation = new ServiceOperation();
 
         this.resolveServiceDomain(urlChunks, serviceOperation);
-		this.resolveControlRecord(urlChunks, serviceOperation);
 		this.resolveActionTerm(urlChunks, httpMethod, serviceOperation);
+		this.resolveFunctionalPattern(serviceOperation);
 
 		this.setGlobalAdditionalProperty("serviceDomain", serviceOperation.getServiceDomain());
 		this.setGlobalAdditionalProperty("controlRecord", serviceOperation.getControlRecord());
@@ -1019,54 +1019,52 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 	 * @param urlChunks the url chunks
 	 * @param serviceOperation the service operation
 	 */
-	private void resolveControlRecord(String[] urlChunks, ServiceOperation serviceOperation) {
-		if (serviceOperation == null) {
-			serviceOperation = new ServiceOperation();
-		}
-
-		if (urlChunks != null && urlChunks.length > 1) {
-			String controlRecord = urlChunks[1];
-			serviceOperation.setControlRecord(controlRecord);
-
+	private void resolveFunctionalPattern(ServiceOperation serviceOperation) {
+		String controlRecord = serviceOperation.getControlRecord();
+		if(controlRecord != null) {
 			if (StringUtils.endsWith(controlRecord.toLowerCase(), "strategy")) {
 				serviceOperation.setFunctionalParttern("Direct");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "management-plan")) {
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "management-plan") || StringUtils.endsWith(controlRecord.toLowerCase(), "managementplan")) {
 				serviceOperation.setFunctionalParttern("Manage");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "administrative-plan")) {
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "administrative-plan") || StringUtils.endsWith(controlRecord.toLowerCase(), "administrativeplan")) {
 				serviceOperation.setFunctionalParttern("Administer");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "operating-session")) {
-				serviceOperation.setFunctionalParttern("Operate");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "procedure")) {
-				serviceOperation.setFunctionalParttern("Process");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "directory")) {
-				serviceOperation.setFunctionalParttern("Register");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "specification")) {
 				serviceOperation.setFunctionalParttern("Design");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "development-project")) {
 				serviceOperation.setFunctionalParttern("Develop");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "assessment")) {
-				serviceOperation.setFunctionalParttern("Assess");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "procedure")) {
+				serviceOperation.setFunctionalParttern("Process");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "operating-session") || StringUtils.endsWith(controlRecord.toLowerCase(), "atmnetworkoperatingsession")) {
+				serviceOperation.setFunctionalParttern("Operate");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "maintenance-agreement")) {
 				serviceOperation.setFunctionalParttern("Maintain");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "log")) {
-				serviceOperation.setFunctionalParttern("Track");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "analysis")) {
-				serviceOperation.setFunctionalParttern("Analyze");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "measurement")) {
-				serviceOperation.setFunctionalParttern("Monitor");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "agreement")) {
-				serviceOperation.setFunctionalParttern("AgreeTerms");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "membership")) {
-				serviceOperation.setFunctionalParttern("Enroll");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "allocation")) {
-				serviceOperation.setFunctionalParttern("Allocate");
 			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "fulfillment-arrangement")) {
 				serviceOperation.setFunctionalParttern("Fulfill");
-			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "transaction")) {
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "arrangement")) {
+                serviceOperation.setFunctionalParttern("Fulfill");
+            } else if (StringUtils.endsWith(controlRecord.toLowerCase(), "transaction")) {
 				serviceOperation.setFunctionalParttern("Transact");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "advise")) {
+				serviceOperation.setFunctionalParttern("Advise");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "state")) {
+				serviceOperation.setFunctionalParttern("Monitor");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "log")) {
+				serviceOperation.setFunctionalParttern("Track");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "directory-entry")) {
+				serviceOperation.setFunctionalParttern("Catalog");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "membership")) {
+				serviceOperation.setFunctionalParttern("Enroll");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "agreement")) {
+				serviceOperation.setFunctionalParttern("AgreeTerms");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "assessment")) {
+				serviceOperation.setFunctionalParttern("Assess");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "analysis")) {
+				serviceOperation.setFunctionalParttern("Analyse");
+			} else if (StringUtils.endsWith(controlRecord.toLowerCase(), "allocation")) {
+				serviceOperation.setFunctionalParttern("Allocate");
+			} else {
+				LOGGER.error("Invalid control record. Couldn't generate a Functional Pattern");
 			}
-		} else {
-			LOGGER.error("No Control Record found");
 		}
 	}
     
@@ -1084,36 +1082,50 @@ public class JavaBianCodegen extends AbstractJavaCodegen
     	
 		if ("initiation".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("initiate");
-			if (urlChunks.length >= 5) {
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 6) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
 			}
 		} else if ("creation".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("create");
-			if (urlChunks.length >= 5) {
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 6) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
 			}
 		} else if ("activation".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("activate");
-			if (urlChunks.length >= 5) {
-				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
-			}
 		} else if ("registration".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
-			if ("Register".equals(serviceOperation.getFunctionalParttern())) {
-				serviceOperation.setActionTerm("registerAt");
-			} else {
-				serviceOperation.setActionTerm("register");
-			}
-			if (urlChunks.length >= 5) {
+			serviceOperation.setActionTerm("register");
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 6) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
 			}
 		} else if ("configuration".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("configure");
-			if (urlChunks.length >= 5) {
-				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
-			}
-		} else if ("updation".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+		} else if ("feedback".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+			serviceOperation.setActionTerm("feedback");
+		} else if ("update".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("update");
-			if (urlChunks.length >= 6) {
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 7) {
+				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
+			}
+		} else if ("control".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+			serviceOperation.setActionTerm("control");
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 7) {
+				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
+			}
+		} else if ("exchange".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+			serviceOperation.setActionTerm("exchange");
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 7) {
+				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
+			}
+		} else if ("capture".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+			serviceOperation.setActionTerm("capture");
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 7) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
 			}
 		} else if ("recording".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
@@ -1121,27 +1133,22 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 			if (urlChunks.length >= 6) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
 			}
-		} else if ("execution".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && ("PUT".equalsIgnoreCase(httpMethod)|| "POST".equalsIgnoreCase(httpMethod))) {
-			if ("PUT".equalsIgnoreCase(httpMethod)) {
-				serviceOperation.setActionTerm("executePut");
-				if (urlChunks.length == 6) {
-					serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
-				}
-			}
-			if ("POST".equalsIgnoreCase(httpMethod)) {
-				serviceOperation.setActionTerm("executePost");
-				if (urlChunks.length == 5) {
-					serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
-				}
+		} else if ("execution".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+			serviceOperation.setActionTerm("execute");
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length == 7) {
+				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
 			}
 		} else if ("evaluation".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("evaluate");
-			if (urlChunks.length >= 5) {
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 6) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
 			}
 		} else if ("provision".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("provide");
-			if (urlChunks.length >= 5) {
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 6) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
 			}
 		} else if ("authorization".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
@@ -1149,22 +1156,22 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 			if (urlChunks.length >= 5) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
 			}
-		} else if ("requisition".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && ("PUT".equalsIgnoreCase(httpMethod)|| "POST".equalsIgnoreCase(httpMethod))) {
-			if ("PUT".equalsIgnoreCase(httpMethod)) {
-				serviceOperation.setActionTerm("requestPut");
-				if (urlChunks.length == 6) {
-					serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
-				}
+		} else if ("requisition".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+			serviceOperation.setActionTerm("request");
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length == 7) {
+				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
 			}
-			if ("POST".equalsIgnoreCase(httpMethod)) {
-				serviceOperation.setActionTerm("requestPost");
-				if (urlChunks.length == 5) {
-					serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
-				}
+		} else if ("grant".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "PUT".equalsIgnoreCase(httpMethod)) {
+			serviceOperation.setActionTerm("grant");
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length == 7) {
+				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
 			}
 		} else if ("notification".equalsIgnoreCase(urlChunks[urlChunks.length - 1]) && "POST".equalsIgnoreCase(httpMethod)) {
 			serviceOperation.setActionTerm("notify");
-			if (urlChunks.length >= 6) {
+			serviceOperation.setControlRecord(urlChunks[2]);
+			if (urlChunks.length >= 7) {
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 3]);
 			}
 		} else if ("DELETE".equalsIgnoreCase(httpMethod)) {
@@ -1174,19 +1181,27 @@ public class JavaBianCodegen extends AbstractJavaCodegen
 			}
 		} else if ("GET".equalsIgnoreCase(httpMethod)) {
 			if (urlChunks.length == 2) {
-				serviceOperation.setActionTerm("retrieveRefIds");
+				serviceOperation.setActionTerm("retrieveSD");
 			}
 			else if (urlChunks.length == 3 && "behavior-qualifiers".equals(urlChunks[2])) {
 				serviceOperation.setActionTerm("retrieveBQs");
+				serviceOperation.setControlRecord(urlChunks[1]);
 			}
 			else if (urlChunks.length == 3) {
-				serviceOperation.setActionTerm("retrieve");
+				serviceOperation.setActionTerm("retrieveRefIds");
+				serviceOperation.setControlRecord(urlChunks[2]);
 			}
 			else if (urlChunks.length == 4) {
-				serviceOperation.setActionTerm("retrieveBQIds");
+				serviceOperation.setActionTerm("retrieve");
+				serviceOperation.setControlRecord(urlChunks[2]);
 			}
 			else if (urlChunks.length == 5) {
+				serviceOperation.setActionTerm("retrieveBQIds");
+				serviceOperation.setControlRecord(urlChunks[2]);
+			}
+			else if (urlChunks.length == 6) {
 				serviceOperation.setActionTerm("retrieve");
+				serviceOperation.setControlRecord(urlChunks[2]);
 				serviceOperation.setBehavioralQualifier(urlChunks[urlChunks.length - 2]);
 			}
 		} else {
@@ -1203,7 +1218,7 @@ public class JavaBianCodegen extends AbstractJavaCodegen
     private void setGlobalAdditionalProperty(String key, String value) {
 		Object previousValue = additionalProperties.get(key);
 		if (previousValue != null && !previousValue.equals(value)) {
-			LOGGER.error(key + " is already set as '" + previousValue + "'. A new '" + key
+			LOGGER.error(key + " is already set as '" + previousValue + "'. A new value '" + value
 					+ "' is declared and is not allowed.");
 			LOGGER.error("Continuing with the Control Record " + previousValue);
 		} else {

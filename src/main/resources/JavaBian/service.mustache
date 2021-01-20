@@ -14,87 +14,99 @@ public interface {{classname}}Service {
 {{#vendorExtensions}}
  {{#actionTerms}}
   {{#initiate}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/initiate}}
   {{#create}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/create}}
   {{#activate}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}({{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/activate}}
   {{#register}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/register}}
-  {{#registerAt}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
-	
-  {{/registerAt}}
   {{#configure}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/configure}}
+  {{#feedback}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	
+  {{/feedback}}
   {{#update}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/update}}
+  {{#control}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	
+  {{/control}}
+  {{#exchange}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	
+  {{/exchange}}
+  {{#capture}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	
+  {{/capture}}
   {{#record}}
 	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/record}}
-  {{#executePost}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+  {{#execute}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
-  {{/executePost}}
-  {{#executePut}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+  {{/execute}}
+  {{#request}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
-  {{/executePut}}
+  {{/request}}
+  {{#grant}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	
+  {{/grant}}
   {{#evaluate}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/evaluate}}
   {{#provide}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, {{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/provide}}
   {{#authorize}}
 	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/authorize}}
-  {{#requestPost}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}({{#behavioralQualifier}}String crReferenceId, {{/behavioralQualifier}}{{#bodyParam}}{{baseType}}{{/bodyParam}} request);
-	
-  {{/requestPost}}
-  {{#requestPut}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}{{#bodyParam}}{{#baseType}}, {{baseType}} request{{/baseType}}{{/bodyParam}});
-	
-  {{/requestPut}}
   {{#terminate}}
 	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}});
 	
   {{/terminate}}
   {{#notify}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}}, {{#bodyParam}}{{baseType}}{{/bodyParam}} request);
 	
   {{/notify}}
   {{#retrieve}}
-	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}});
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId{{#behavioralQualifier}}, String bqReferenceId{{/behavioralQualifier}});
 	
   {{/retrieve}}
   {{#retrieveRefIds}}
-	List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}();
+	List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId);
 	
   {{/retrieveRefIds}}
+  {{#retrieveSD}}
+	{{returnType}} {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId);
+	
+  {{/retrieveSD}}
   {{#retrieveBQs}}
 	List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}();
 	
   {{/retrieveBQs}}
   {{#retrieveBQIds}}
-	List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String crReferenceId, String behaviorQualifier);
+	List<String> {{actionTermCamelCase}}{{behavioralQualifierTitleCase}}(String sdReferenceId, String crReferenceId, String behaviorQualifier);
 	
   {{/retrieveBQIds}}
  {{/actionTerms}}
